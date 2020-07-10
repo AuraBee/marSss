@@ -1,0 +1,521 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-semi: 500;
+  --fw-bold:700;
+  --fs-h1: 1.75rem;
+  --fs-h2: 1.3rem;
+  --fs-p: 1rem;
+  --fs-body: 1rem;
+  --fs-xl: 4.5rem;
+  --clr-light: #fff;
+  --clr-gray: #989898;
+  --clr-dark: #444;
+  --clr-accent: #d06d6d;
+  --clr-accent-dark: #613131;
+}
+
+.sr-only:not(:focus):not(active) {
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  background-image: url(../img/mars-insight.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow: hidden;
+  color: red;
+}
+
+h1, h2, h3 {
+  line-height: 1;
+}
+
+a {
+  color: var(--clr-accent);
+}
+
+a:hover {
+  color: var(--clr-accent-dark);
+}
+
+.main-title {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  color: green;
+  letter-spacing: 2px;
+  grid-column: 1 / -1;
+}
+
+.section-title {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.section-title--date {
+  font-size: var(--fs-xl);
+}
+
+.reading {
+  font-size: var(--fs-h2);
+  margin: 0;
+  color: var --clr-gray;
+}
+
+.mars-current-weather {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2em;
+  max-width: 1000px;
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em;
+}
+
+.date {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+}
+
+.date__day {
+  font-size: var(--fs-h2);
+  margin: 0;
+  color: var(--clr-gray);
+  font-weight: var(--fw-light);
+}
+
+.temp {
+  --border: solid .3em var(--clr-accent-dark);
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  border-left: var(--border);
+  border-right: var(--border);
+  padding: 0 2em 3em 2em;
+}
+
+.temp .reading span {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.temp .reading span span {
+  padding: .5em;
+}
+
+.wind {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: min-content 1fr;
+      grid-template-rows: -webkit-min-content 1fr;
+      grid-template-rows: min-content 1fr;
+  -ms-grid-row-align: start;
+      align-self: start;
+}
+
+.wind .section-title,
+.wind .reading {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.wind .section-title span,
+.wind .reading span {
+  padding: .5em 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.wind__direction {
+  --size: 6rem;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  -ms-grid-column: 2;
+  grid-column: 2 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / span 2;
+}
+
+.wind__arrow {
+  --direction:180deg;
+  --size: .75rem;
+  height: calc(var(--size) * 3);
+  width: var(--size);
+  background: var(--clr-accent-dark);
+  -webkit-clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+  -webkit-transform: translateY(-50%) rotate(var(--direction));
+          transform: translateY(-50%) rotate(var(--direction));
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+.wind .info {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+}
+
+.wind .unit {
+  -ms-grid-column: 4;
+  grid-column: 4 / 4;
+  place-self: end;
+  color: var(--clr-light);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: .5em;
+  opacity: .7;
+  -webkit-transition: opacity 275ms linear;
+  transition: opacity 275ms linear;
+}
+
+@media (max-width: 900px) {
+  .wind .unit {
+    position: absolute;
+    left: 3em;
+    top: 3em;
+  }
+}
+
+.wind .unit:hover {
+  opacity: 1;
+}
+
+.wind .unit label {
+  cursor: pointer;
+}
+
+.wind .unit input {
+  clip: rect 0 0 0 0;
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.wind .unit__toggle {
+  cursor: pointer;
+  width: 4em;
+  border: 5px solid var(--clr-light);
+  background: transparent;
+  padding: 0;
+  border-radius: 100vmax;
+  margin: 0 5em;
+}
+
+.wind .unit__toggle::after {
+  content: '';
+  display: block;
+  background: var(--clr-gray);
+  border-radius: 50%;
+  height: 1rem;
+  margin: 3px;
+  margin-left: auto;
+  width: 50%;
+}
+
+.wind :checked ~ .unit__toggle::after {
+  margin-left: 3px;
+}
+
+.wind .previous-weather {
+  color: var(--clr-dark);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  -webkit-transform: translateY(60%);
+          transform: translateY(60%);
+  -webkit-transition: -webkit-transform 350ms ease;
+  transition: -webkit-transform 350ms ease;
+  transition: transform 350ms ease;
+  transition: transform 350ms ease, -webkit-transform 350ms ease;
+  padding: 3rem;
+}
+
+.wind .show-previous-weather {
+  position: absolute;
+  color: var(--clr-gray);
+  width: 30rem;
+  background: #64edb8;
+  left: -50%;
+  -webkit-transform: translate(-50%, calc( -100% -3rem));
+          transform: translate(-50%, calc( -100% -3rem));
+  text-align: center;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  -webkit-clip-path: polygon(50% 0, 0 100%, 100% 100%);
+          clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  cursor: pointer;
+  border: 0;
+  font-family: inherit;
+}
+
+.wind:hover, .wind:focus {
+  color: var(--clr-dark);
+}
+
+.wind span {
+  display: block;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+}
+
+.wind .previous-days {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.wind .previous-weather__title {
+  text-align: center;
+}
+
+.wind .previous-day {
+  opacity: 0;
+}
+
+.wind .previous-day > * {
+  margin: 0;
+}
+
+.wind .previous-day__date {
+  font-size: .9rem;
+  color: var(--clr-gray);
+}
+
+.wind .previous-day__more-info {
+  cursor: pointer;
+  border: 0;
+  border-radius: 100vmax;
+  background: var(--clr-dark);
+  color: var(--clr-light);
+  text-transform: uppercase;
+  padding: .3em .1em;
+  margin-top: 1em;
+}
+
+.wind .previous-day__more-info:hover, .wind .previous-day__more-info:focus {
+  background: var(--clr-gray);
+  margin: 0.5em;
+}
+
+.wind .show-weather.previous-weather {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.wind .show-weather.previous-weather .show-previous-weather span {
+  display: block;
+  -webkit-transform: rotate(180deg) translateY(-6px);
+          transform: rotate(180deg) translateY(-6px);
+}
+
+.wind .show-weather.previous-weather .previous-weather__title,
+.wind .show-weather.previous-weather .previous-day {
+  animation: slideUpIn 750ms forwards;
+  -webkit-animation: slideUpIn 750ms forwards;
+}
+
+.wind .show-weather.previous-weather .previous-weather__title {
+  text-align: right;
+}
+
+.wind .show-weather.previous-weather .previous-day:nth-child(1) {
+  -webkit-animation-delay: 100ms;
+          animation-delay: 100ms;
+}
+
+.wind .show-weather.previous-weather .previous-day:nth-child(2) {
+  -webkit-animation-delay: 200ms;
+          animation-delay: 200ms;
+}
+
+.wind .show-weather.previous-weather .previous-day:nth-child(3) {
+  -webkit-animation-delay: 300ms;
+          animation-delay: 300ms;
+}
+
+.wind .show-weather.previous-weather .previous-day:nth-child(4) {
+  -webkit-animation-delay: 400ms;
+          animation-delay: 400ms;
+}
+
+.wind .show-weather.previous-weather .previous-day:nth-child(5) {
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+
+.wind .show-weather.previous-weather .previous-day:nth-child(6) {
+  -webkit-animation-delay: 600ms;
+          animation-delay: 600ms;
+}
+
+.wind .show-weather.previous-weather .previous-day:nth-child(7) {
+  -webkit-animation-delay: 700ms;
+          animation-delay: 700ms;
+}
+
+@-webkit-keyframes slideUpIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(50%);
+            transform: translate(50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes slideUpIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(50%);
+            transform: translate(50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@media (min-width: 600px) {
+  .wind .mars-current-weather {
+    display: -ms-grid;
+    display: grid;
+    row-gap: 2em;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .wind .date {
+    grid-column: 1 / -1;
+  }
+  .wind .temp {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / 2;
+    padding: 0;
+  }
+  .wind .wind {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2 / 3;
+  }
+}
+
+@media (min-width: 900px) {
+  .wind :root {
+    --fs-h1: 1.5rem;
+    --fs-h2: 2.25rem;
+    --fs-body: 1rem;
+    --fs-xl: 4.5rem;
+  }
+  .wind body {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .wind .date {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / 2;
+  }
+  .wind .mars-current-weather {
+    padding: 2em;
+    margin: 4em 4em 0 4em;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+  }
+  .wind .temp {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2 / 3;
+    border-left: var(--border);
+    border-right: var(--border);
+    padding: 0 2em;
+  }
+  .wind .wind {
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-column: 3 / 4;
+  }
+  .wind .wind .section-title,
+  .wind .wind .reading {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2 / 3;
+  }
+  .wind .wind__direction {
+    --size: 6rem;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    grid-row: 1 / span 2;
+  }
+  .wind .wind__arrow {
+    --size: 1rem;
+  }
+  .wind .info {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1 / 3;
+  }
+}
+/*# sourceMappingURL=main.css.map */
