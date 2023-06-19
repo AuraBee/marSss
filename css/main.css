@@ -34,6 +34,9 @@
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.6;
@@ -56,6 +59,22 @@ a {
 
 a:hover {
   color: var(--clr-accent-dark);
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  margin: 1em;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.weather-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 55px;
 }
 
 .main-title {
@@ -83,16 +102,13 @@ a:hover {
   color: var --clr-gray;
 }
 
-.mars-current-weather {
+.weather-bg {
   background: rgba(0, 0, 0, 0.7);
+}
+
+.mars-current-weather {
   padding: 2em;
-  max-width: 1000px;
-  margin: auto;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2em;
+  max-width: 100%;
 }
 
 .date {
