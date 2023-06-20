@@ -65,8 +65,9 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: auto;
   padding: 1em;
-  margin: 1em;
+  margin: auto;
   background: rgba(0, 0, 0, 0.7);
 }
 
@@ -74,7 +75,13 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 55px;
+  justify-items: space-between;
+  -webkit-box-flex: 5px;
+      -ms-flex-positive: 5px;
+          flex-grow: 5px;
+  gap: 15em;
+  border: 1 px solid #d06d6d;
+  margin: auto;
 }
 
 .main-title {
@@ -83,7 +90,6 @@ a:hover {
   text-transform: uppercase;
   color: green;
   letter-spacing: 2px;
-  grid-column: 1 / -1;
 }
 
 .section-title {
@@ -111,12 +117,6 @@ a:hover {
   max-width: 100%;
 }
 
-.date {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1 / 2;
-}
-
 .date__day {
   font-size: var(--fs-h2);
   margin: 0;
@@ -126,9 +126,6 @@ a:hover {
 
 .temp {
   --border: solid .3em var(--clr-accent-dark);
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / 3;
   border-left: var(--border);
   border-right: var(--border);
   padding: 0 2em 3em 2em;
@@ -145,17 +142,13 @@ a:hover {
 }
 
 .wind {
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 1;
-  grid-column: 3 / 4;
-  display: -ms-grid;
-  display: grid;
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   -ms-grid-rows: min-content 1fr;
       grid-template-rows: -webkit-min-content 1fr;
       grid-template-rows: min-content 1fr;
-  -ms-grid-row-align: start;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
       align-self: start;
 }
 

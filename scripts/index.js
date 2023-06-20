@@ -1,9 +1,8 @@
 const API_KEY = 'DEMO_KEY'
-// const API_URL ='https://api.nasa.gov/insight_weather/?api_key=QkzYYbR84nfKOerv1nXUdGuDwuYULGLQ29LqlNuW&feedtype=json&ver=1.0'
+const API_URL ='https://api.nasa.gov/insight_weather/?api_key=QkzYYbR84nfKOerv1nXUdGuDwuYULGLQ29LqlNuW&feedtype=json&ver=1.0'
 
 // here settings re selectors for different elements //
 const previousWeatherToggle = document.querySelector('.show-previous-weather');
-
 const previousWeather = document.querySelector('.previous-weather');
 const currentSolElement = document.querySelector('[data-current-sol]')
 const currentDateElement = document.querySelector('[data-current-date]')
@@ -22,8 +21,6 @@ previousWeatherToggle.addEventListener('click', () => {
     previousWeather.classList.toggle('show-weather')
 })
 
-
-
 let selectedSolIndex //global//
 
 getWeather().then(sols => {
@@ -32,34 +29,31 @@ getWeather().then(sols => {
     displayPreviousSols(sols)
     updateUnits()
 
-
-
-    unitToggle.addEventListener('click', () => {
+        unitToggle.addEventListener('click', () => {
         let metricUnits = !isMetric() //!metricRadio.checked 
         metricRadio.checked = metricUnits
         imperialRadio.checked = !metricUnits
         displaySelectedSol(sols)
         displayPreviousSols(sols)
         updateUnits()
-    })
+        })
 
-    metricRadio.addEventListener('change', () => {
-        displaySelectedSol(sols)
-        displayPreviousSols(sols)
-        updateUnits()
-    })
+        metricRadio.addEventListener('change', () => {
+            displaySelectedSol(sols)
+            displayPreviousSols(sols)
+            updateUnits()
+        })
 
-    imperialRadio.addEventListener('change', () => {
-        displaySelectedSol(sols)
-        displayPreviousSols(sols)
-        updateUnits()
-   })
+        imperialRadio.addEventListener('change', () => {
+            displaySelectedSol(sols)
+            displayPreviousSols(sols)
+            updateUnits()
+    })
 })
 
 function displaySelectedSol(sols) {
         
         const selectedSol = sols[selectedSolIndex]
-
         currentSolElement.innerText = selectedSol.sol
         currentDateElement.innerText = displayDate(selectedSol.date)
         currentTempHighElement.innerText = displayTemperature (selectedSol.maxTemp)
@@ -78,14 +72,15 @@ function displayPreviousSols(sols) {
     previousSolContainer.innerHTML = ''
     
     sols.forEach((solData, index) => {
+
         const solContainer = previousSolTemplate.content.cloneNode(true)
         solContainer.querySelector('[data-sol]').innerText = solData.sol
         solContainer.querySelector('[data-date]').innerText = displayDate(solData.date)
         solContainer.querySelector('[data-temp-high]').innerText = displayTemperature(solData.maxTemp)
         solContainer.querySelector('[data-temp-low]').innerText = displayTemperature(solData.minTemp)
+        
         solContainer.querySelector('[data-select-button]').addEventListener('click', () =>  {
         selectedSolIndex = index
-
         displaySelectedSol(sols) //references function object above
         })
 
