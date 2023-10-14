@@ -1,5 +1,5 @@
 const API_KEY = 'DEMO_KEY'
-const API_URL ='https://api.nasa.gov/insight_weather/?api_key=QkzYYbR84nfKOerv1nXUdGuDwuYULGLQ29LqlNuW&feedtype=json&ver=1.0'
+const API_URL ='https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0'
 
 // here settings re selectors for different elements //
 const previousWeatherToggle = document.
